@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="key-entry-container">
+        <div id="key-entry-box">
+            <h2>Enter Key</h2>
+            <input type="text" id="key-input" placeholder="Enter your key...">
+            <button id="submit-key">Submit</button>
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <header>
+            <h1>Game Search</h1>
+            <input type="text" id="search-bar" placeholder="Search for games...">
+        </header>
+        <aside id="categories">
+            <h2>Categories</h2>
+            <ul>
+                <li data-category="all">All</li>
+                <li data-category="action">Action</li>
+                <li data-category="adventure">Adventure</li>
+                <li data-category="rpg">RPG</li>
+                <li data-category="sports">Sports</li>
+            </ul>
+        </aside>
+        <main id="game-list">
+            <!-- Games will be dynamically added here -->
+        </main>
+        <div id="game-display" style="display: none;">
+            <button id="close-game">Close Game</button>
+            <iframe id="game-frame" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="background.js"></script>
+</body>
+</html>
