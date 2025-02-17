@@ -51,3 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayGames(games);
 });
+/* Add this at the end of styles.css */
+@keyframes particleAnimation {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, rgba(255,0,150,1) 0%, rgba(255,204,0,1) 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleAnimation 2s linear forwards;
+}
