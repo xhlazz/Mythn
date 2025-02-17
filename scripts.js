@@ -1,57 +1,131 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const games = [
-        { title: 'Game 1', category: 'action', imageUrl: 'path/to/image1.jpg' },
-        { title: 'Game 2', category: 'adventure', imageUrl: 'path/to/image2.jpg' },
-        { title: 'Game 3', category: 'rpg', imageUrl: 'path/to/image3.jpg' },
-        { title: 'Game 4', category: 'sports', imageUrl: 'path/to/image4.jpg' },
-        { title: 'Game 5', category: 'action', imageUrl: 'path/to/image5.jpg' },
-        // Add more games as needed
-    ];
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-    const gameList = document.getElementById('game-list');
-    const searchBar = document.getElementById('search-bar');
-    const categoryItems = document.querySelectorAll('#categories li');
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+    cursor: crosshair;
+}
 
-    function displayGames(filteredGames) {
-        gameList.innerHTML = '';
-        filteredGames.forEach(game => {
-            const gameItem = document.createElement('div');
-            gameItem.classList.add('game-item');
-            gameItem.innerHTML = `
-                <img src="${game.imageUrl}" alt="${game.title}">
-                <h3>${game.title}</h3>
-                <p>Category: ${game.category}</p>
-            `;
-            gameList.appendChild(gameItem);
-        });
-    }
+header {
+    background-color: #111;
+    color: white;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-    function filterGames() {
-        const searchTerm = searchBar.value.toLowerCase();
-        const selectedCategory = document.querySelector('#categories li.active')?.dataset.category || 'all';
-        
-        const filteredGames = games.filter(game => {
-            const matchesSearch = game.title.toLowerCase().includes(searchTerm);
-            const matchesCategory = selectedCategory === 'all' || game.category === selectedCategory;
-            return matchesSearch && matchesCategory;
-        });
-        
-        displayGames(filteredGames);
-    }
+#search-bar {
+    width: 50%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    border: 2px solid #333;
+    background: #222;
+    color: #fff;
+    outline: none;
+}
 
-    searchBar.addEventListener('input', filterGames);
+#categories {
+    width: 20%;
+    padding: 1rem;
+    background-color: #111;
+    margin: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-    categoryItems.forEach(item => {
-        item.addEventListener('click', () => {
-            categoryItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-            filterGames();
-        });
-    });
+#categories ul {
+    list-style: none;
+    padding: 0;
+}
 
-    displayGames(games);
-});
-/* Add this at the end of styles.css */
+#categories li {
+    padding: 0.5rem;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    color: #fff;
+}
+
+#categories li:hover, #categories li.active {
+    background-color: #222;
+    border-left: 4px solid #ff00ff;
+}
+
+#game-list {
+    width: 70%;
+    padding: 1rem;
+    background-color: #111;
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.game-item {
+    width: 30%;
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #222;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.game-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+}
+
+.game-item h3, .game-item p {
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+.game-item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta, red);
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.game-item:hover::before {
+    opacity: 1;
+    animation: animateBorder 5s linear infinite;
+}
+
+@keyframes animateBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 @keyframes particleAnimation {
     0% { transform: scale(1); opacity: 1; }
     100% { transform: scale(0); opacity: 0; }
