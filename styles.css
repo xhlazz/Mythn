@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+    cursor: crosshair; /* Reset to default crosshair cursor */
+}
+
+#key-entry-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#key-entry-box {
+    background-color: #111;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 300px;
+}
+
+#key-entry-box h2 {
+    margin-bottom: 1rem;
+}
+
+#key-entry-box input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    background: #222;
+    color: #fff;
+    outline: none;
+    border-radius: 10px;
+}
+
+#key-entry-box button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #444;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-radius: 10px;
+}
+
+#key-entry-box button:hover {
+    background: #666;
+}
+
+header {
+    background-color: #111;
+    color: white;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+#search-bar {
+    width: 50%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    border: 2px solid #333;
+    background: #222;
+    color: #fff;
+    outline: none;
+    border-radius: 10px;
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+#game-list-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#game-list {
+    width: 70%;
+    padding: 1rem;
+    background-color: #111;
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow-y: auto;
+    max-height: 70vh;
+    border-radius: 20px;
+    border: 2px solid;
+    border-image: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta, red);
+    border-image-slice: 1;
+    animation: animateBorder 5s linear infinite;
+}
+
+#categories {
+    width: 20%;
+    padding: 1rem;
+    background-color: #111;
+    margin: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    border: 2px solid;
+    border-image: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta, red);
+    border-image-slice: 1;
+    animation: animateBorder 5s linear infinite;
+}
+
+#categories ul {
+    list-style: none;
+    padding: 0;
+}
+
+#categories li {
+    padding: 0.5rem;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    color: #fff;
+}
+
+#categories li:hover, #categories li.active {
+    background-color: #222;
+    border-left: 4px solid #ff00ff;
+}
+
+.game-item {
+    width: 30%;
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px solid #333;
+    border-radius: 20px;
+    background-color: #222;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border: 2px solid;
+    border-image: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta, red);
+    border-image-slice: 1;
+    animation: animateBorder 5s linear infinite;
+}
+
+.game-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+}
+
+.game-item h3, .game-item p {
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+#game-display {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 100;
+}
+
+#game-frame {
+    width: 80%;
+    height: 80%;
+    border: none;
+    border-radius: 10px;
+}
+
+#close-game {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #444;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background 0.3s;
+    border-radius: 10px;
+}
+
+#close-game:hover {
+    background: #666;
+}
+
+@keyframes animateBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
