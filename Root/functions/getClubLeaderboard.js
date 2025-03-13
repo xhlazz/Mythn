@@ -1,8 +1,8 @@
-const fetch = require('node-fetch');  // Make sure node-fetch is installed
+const fetch = require('node-fetch');  // Ensure you have this installed in your functions folder
 
 exports.handler = async function(event, context) {
   const clubTag = '#J2CL82CU';  // Your club tag
-  const apiKey = process.env.BRAWL_API_KEY;  // API Key from environment variables in Netlify
+  const apiKey = process.env.IPAKEY;  // Access the new environment variable IPAKEY
 
   if (!apiKey) {
     return {
@@ -15,7 +15,7 @@ exports.handler = async function(event, context) {
   const leaderboardResponse = await fetch(`https://api.brawlstars.com/v1/clubs/${clubTag}/leaderboard`, {
     method: 'GET',
     headers: {
-      'Authorization': `Bearer ${apiKey}`,  // API key in the Authorization header
+      'Authorization': `Bearer ${apiKey}`,  // Use IPAKEY in the Authorization header
     },
   });
 
