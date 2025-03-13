@@ -1,17 +1,26 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #2c3e50;
-  color: white;
+/* Basic reset */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  text-align: center;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
+  flex-direction: column;
 }
 
 h1 {
-  font-size: 3em;
-  margin-top: 20px;
+  margin: 20px;
+  font-size: 2.5em;
+  color: #f39c12;
 }
 
 .search-container {
@@ -20,13 +29,14 @@ h1 {
 
 input[type="text"] {
   padding: 10px;
-  font-size: 1em;
+  font-size: 1.2em;
   width: 300px;
+  margin-right: 10px;
 }
 
 #search-button {
   padding: 10px;
-  font-size: 1em;
+  font-size: 1.2em;
   background-color: #f39c12;
   border: none;
   color: white;
@@ -34,17 +44,36 @@ input[type="text"] {
 }
 
 #leaderboard-container {
-  margin-top: 20px;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .player-card {
   background-color: #34495e;
-  margin: 10px;
-  padding: 15px;
-  border-radius: 5px;
-  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.player-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .player-card h3 {
-  margin: 0;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.player-card p {
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.player-card strong {
+  color: #e74c3c;
 }
