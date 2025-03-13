@@ -11,7 +11,7 @@ exports.handler = async function(event, context) {
     };
   }
 
-  // Fetch leaderboard data (modify this URL to actual Brawl Stars API endpoint)
+  // Fetch leaderboard data for the club
   const response = await fetch(`https://api.brawlstars.com/v1/clubs/${clubTag}/leaderboard`, {
     method: 'GET',
     headers: {
@@ -28,15 +28,28 @@ exports.handler = async function(event, context) {
 
   const data = await response.json();
 
-  // Map the player data into the desired structure
-  const players = data.items.map(player => ({
-    name: player.name,
-    tag: player.tag,
-    trophies: player.trophies,
-    rank: player.rank,
-    favoriteBrawler: player.favoriteBrawler,
-    profilePic: player.profilePic,  // Assuming there's a field for profile pic
-  }));
+  // Fetch additional stats for each player (e.g., trophies, rank, brawler)
+  const playerStatsPromises = data.items.map(async (player) => {
+    const playerStatsResponse = await fetch(`https://api.brawlstars.com/v1/players/${player.tag}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+      },
+    });
+
+    const playerStats = await playerStatsResponse.json();
+    return {
+      name: player.name,
+      tag: player.tag,
+      trophies: playerStats.trophies,
+      rank: playerStats.rank,
+      favoriteBrawler: playerStats.brawler,
+      profilePic: playerStats.avatarUrl,  // Profile picture
+    };
+  });
+
+  // Wait for all player stats to be fetched
+  const players = await Promise.all(playerStatsPromises);
 
   return {
     statusCode: 200,
