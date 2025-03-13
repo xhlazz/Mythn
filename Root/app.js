@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Call the function to load leaderboard data when page loads
   fetchLeaderboard();
 });
 
