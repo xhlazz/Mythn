@@ -1,38 +1,22 @@
 // functions/getBrawlStats.js
-const axios = require('axios');
+const fetch = require('node-fetch');
 
 exports.handler = async function(event, context) {
-  const BRAWL_API_KEY = process.env.BRAWL_API_KEY;  // Get the API key securely from environment variables
-
-  // Get playerTag from query parameters
-  const playerTag = event.queryStringParameters.playerTag; // Example: ?playerTag=PLAYER_TAG
-
-  if (!playerTag) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error: "Player tag is required" }),
-    };
-  }
-
-  // Construct the API URL (replace with the actual API endpoint if necessary)
-  const url = `https://api.brawlstars.com/v1/players/%23${playerTag}`;
+  const { playerTag } = event.queryStringParameters;
 
   try {
-    const response = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${BRAWL_API_KEY}`,  // Use the API key here for authorization
-      },
+    const response = await fetch(`https://api.brawlstars.com/v1/players/${playerTag}`, {
+      headers: { 'Authorization': `Bearer ${process.env.BRAWL_API_KEY}` },
     });
-
-    // Return data from the Brawl Stars API
+    const data = await response.json();
     return {
       statusCode: 200,
-      body: JSON.stringify(response.data),  // Respond with the player stats data
+      body: JSON.stringify(data),
     };
-  } catch (error) {
+  } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Error fetching data", details: error.message }),
+      body: JSON.stringify({ message: 'Failed to fetch player stats' }),
     };
   }
 };
