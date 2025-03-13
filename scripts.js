@@ -15,12 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             membersInfo.innerHTML = '<h3>Members:</h3>';
             data.members.forEach(member => {
-                membersInfo.innerHTML += `
-                    <div class="member">
-                        <p>Name: ${member.name}</p>
-                        <p>Trophies: ${member.trophies}</p>
-                    </div>
+                const memberDiv = document.createElement('div');
+                memberDiv.classList.add('member');
+                memberDiv.innerHTML = `
+                    <p>Name: ${member.name}</p>
+                    <p>Trophies: ${member.trophies}</p>
                 `;
+                membersInfo.appendChild(memberDiv);
             });
         } catch (error) {
             console.error('Error fetching club data:', error);
