@@ -1,0 +1,3 @@
+[build]
+  functions = "functions"  # The folder where your serverless functions reside
+  publish = "/"            # The root folder, where your static files (index.html, app.js, styles.css) are located
