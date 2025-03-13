@@ -15,65 +15,68 @@ body {
   align-items: center;
   height: 100vh;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 h1 {
   margin: 20px;
-  font-size: 2.5em;
+  font-size: 3em;
   color: #f39c12;
 }
 
-.search-container {
-  margin: 20px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  font-size: 1.2em;
-  width: 300px;
-  margin-right: 10px;
-}
-
-#search-button {
-  padding: 10px;
-  font-size: 1.2em;
-  background-color: #f39c12;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
 #leaderboard-container {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .player-card {
   background-color: #34495e;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   width: 250px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .player-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-.player-card h3 {
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+h3 {
   font-size: 1.5em;
   margin-bottom: 10px;
 }
 
-.player-card p {
+p {
   font-size: 1.1em;
   margin-bottom: 5px;
 }
 
-.player-card strong {
-  color: #e74c3c;
+.badge {
+  background-color: #e74c3c;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#leaderboard-container h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
 }
