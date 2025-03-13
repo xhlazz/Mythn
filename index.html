@@ -3,53 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Los Papuchos Hub</title>
+    <title>Brawl Stars Club Stats</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <video autoplay muted loop id="background-video">
-        <source src="https://www.desktophut.com/files/Ac24MDbeyI-CoolCarLiveWallpaper.mp4" type="video/mp4">
-    </video>
-
-    <button id="toggle-video">Stop Background Video</button>
-
-    <div id="key-entry-container">
-        <div id="key-entry-box">
-            <h2>Enter Key</h2>
-            <input type="text" id="key-input" placeholder="Enter your key...">
-            <button id="submit-key">Submit</button>
-            <p id="message"></p>
-            <img id="invalid-key-image" src="https://media.tenor.com/czrx4XEaq-YAAAAM/spongebob-spongebob-meme.gif" alt="Invalid key image" style="display:none; margin-top: 10px;">
+    <div class="container">
+        <h1>Brawl Stars Club Stats</h1>
+        <div id="club-info">
+            <!-- Club information will be displayed here -->
+        </div>
+        <div id="members-info">
+            <!-- Members information will be displayed here -->
         </div>
     </div>
-
-    <div id="main-content" style="display: none;">
-        <header>
-            <h1>Los Papuchos Hub</h1>
-            <input type="text" id="search-bar" placeholder="Search for games...">
-        </header>
-        <main id="content">
-            <div id="game-list-container">
-                <div id="game-list">
-                    <!-- Games will be dynamically added here -->
-                </div>
-            </div>
-            <aside id="categories">
-                <h2>Categories</h2>
-                <ul>
-                    <li data-category="all">All</li>
-                    <li data-category="action">Action</li>
-                    <li data-category="sports">Sports</li>
-                    <li data-category="simulator">Simulator</li>
-                </ul>
-            </aside>
-        </main>
-        <div id="game-display" style="display: none;">
-            <button id="close-game">Close Game</button>
-            <iframe id="game-frame" src="" frameborder="0"></iframe>
-        </div>
-    </div>
-
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
