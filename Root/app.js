@@ -1,6 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetchLeaderboard();
+  checkApiKey();  // Check if the API key works when the page loads
+  fetchLeaderboard();  // Fetch the leaderboard
 });
+
+// Function to check if the IPA key is working
+async function checkApiKey() {
+  const response = await fetch('/functions/validateKey');
+  const result = await response.json();
+  
+  const apiStatusContainer = document.getElementById("api-status");
+  if (result.message === "Correctly used key!") {
+    apiStatusContainer.textContent = "Correctly used key!";
+    apiStatusContainer.style.color = "green";
+  } else {
+    apiStatusContainer.textContent = "Incorrect key!";
+    apiStatusContainer.style.color = "red";
+  }
+}
 
 // Fetch leaderboard data for top players in the club
 async function fetchLeaderboard() {
