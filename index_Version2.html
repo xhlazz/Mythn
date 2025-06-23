@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About xhlazz</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Nunito', sans-serif;
+            overflow-y: scroll;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        ::selection {
+            background: #ffffff;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="https://motionbgs.com/media/5575/black-and-white-topography.960x540.mp4" type="video/mp4">
+        </video>
+    </div>
+    <h1>About xhlazz</h1>
+    <div class="social-media">
+        <a href="https://open.spotify.com/user/313mw2nulhhjh3g2n4rusoxcar2u?si=9mThoe9pR8qtscAfFzplcw" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387730456088618/Logo4.png" alt="Spotify">
+        </a>
+        <a href="https://discord.com/users/996117984928088167" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387733018808322/Logo3.png" alt="Discord">
+        </a>
+        <a href="https://www.instagram.com/xhlazz_?igsh=b2ZhcGltNGJ4czVh&utm_source=qr" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387730804342866/Logo5.png" alt="Instagram">
+        </a>
+        <a href="https://www.roblox.com/users/2774517806/profile" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335390043459686440/Logo13.png" alt="Roblox">
+        </a>
+        <a href="https://tiktok.com/@xhlazz" target="_blank">
+            <img src="https://media.discordapp.net/attachments/1255692212717752513/1335387731576098921/Logo8.png" alt="TikTok">
+        </a>
+    </div>
+    <main>
+        <section id="favorites">
+            <h2>Favorites</h2>
+            <div class="toggle-buttons">
+                <button class="toggle-button" onclick="toggleSection('music-section', this)">
+                    Music <span class="arrow">&#x25BC;</span>
+                </button>
+                <button class="toggle-button" onclick="toggleSection('artists-section', this)">
+                    Artists <span class="arrow">&#x25BC;</span>
+                </button>
+                <button class="toggle-button" onclick="toggleSection('basic-section', this)">
+                    Basic <span class="arrow">&#x25BC;</span>
+                </button>
+            </div>
+            <section id="music-section">
+                <h2>My Type Of Music</h2>
+                <!-- Spotify embeds here -->
+            </section>
+            <section id="artists-section">
+                <h2>Favorite Artists</h2>
+                <!-- Spotify embeds here -->
+            </section>
+            <section id="basic-section">
+                <h2>Fast Facts</h2>
+                <p><b>Age:</b> <span id="age"></span></p>
+                <p>My fav colors are White and Black </p>
+                <p>Expect me to be shy.</p>
+                <p>Hobby: Create Roblox games</p>
+                <p>Discord and roblox here!</p>
+                <p>
+                    <a href="https://discord.com/users/996117984928088167" target="_blank">Discord (click me)</a><br>
+                    <a href="https://www.roblox.com/users/2774517806/profile" target="_blank">Roblox (click me)</a>
+                </p>
+            </section>
+        </section>
+        <section id="description">
+            <h2> About xhlazz</h2>
+            <p>
+                Hi, I bet you're just curious about this website I made, or you are my friend and just being nosy! Yeah so as I always say im shy and well im not used to make conversations,
+                im just a normal dude in the internet... I dont have anything to talk about so im just going to say that I make Roblox games as a Solo developer.
+                I hope you at least send me a message saying something about this website, I would be really proud :)
+            </p>
+            <p id="birthday-info"></p>
+        </section>
+        <div id="birthday-message">
+            <textarea id="birthday-text" placeholder="Write your birthday message here..."></textarea>
+            <button onclick="submitBirthdayMessage()">Submit</button>
+        </div>
+        <!-- EXTRAS SECTION STARTS HERE -->
+        <section id="extras-section">
+            <h2>Extras</h2>
+            <div class="extras-gallery">
+                <div class="extra-item">
+                    <h3>Sample Image 1</h3>
+                    <p>This is the description for the first extra image.</p>
+                    <img 
+                        src="https://i.ibb.co/5X6m5CW/sample.jpg"
+                        alt="Sample 1"
+                        class="extra-image"
+                        data-title="Sample Image 1"
+                        data-description="This is the description for the first extra image."
+                        onclick="openLightbox(this)"
+                    >
+                </div>
+                <div class="extra-item">
+                    <h3>Sample Image 2</h3>
+                    <p>Description for the second image goes here.</p>
+                    <img 
+                        src="https://i.ibb.co/5X6m5CW/sample2.jpg"
+                        alt="Sample 2"
+                        class="extra-image"
+                        data-title="Sample Image 2"
+                        data-description="Description for the second image goes here."
+                        onclick="openLightbox(this)"
+                    >
+                </div>
+                <!-- Add more .extra-item blocks as needed -->
+            </div>
+        </section>
+        <!-- Lightbox Modal -->
+        <div id="lightbox-modal" style="display:none;" onclick="closeLightbox(event)">
+            <div id="lightbox-content">
+                <span id="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+                <h3 id="lightbox-title"></h3>
+                <img id="lightbox-img" src="" alt="">
+                <p id="lightbox-desc"></p>
+            </div>
+        </div>
+        <!-- END EXTRAS SECTION -->
+    </main>
+    <audio id="background-audio" autoplay loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>
