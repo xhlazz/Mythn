@@ -1,15 +1,26 @@
-// script.js
-// Updated to use local assets for the two portfolio games and store images.
-// Handles: smooth scroll, reveal-on-scroll, modal previews, countdown + celebration, cake interaction, and mini-games.
 
 document.addEventListener('DOMContentLoaded', () => {
   // ---------- small utilities ----------
   const el = (selector, parent = document) => parent.querySelector(selector);
   const els = (selector, parent = document) => Array.from(parent.querySelectorAll(selector));
 
+  // Set background-image for all .animated-thumb from data-src
+  function initBackgroundThumbs() {
+    els('.animated-thumb').forEach(div => {
+      const src = div.dataset.src || div.getAttribute('data-src') || div.getAttribute('src') || '';
+      if (src) {
+        // set as CSS background for consistent cover + transforms
+        div.style.backgroundImage = `url("${src}")`;
+      }
+    });
+  }
+
   // Year in footer
   const yearEl = el('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Initialize thumbs early so they appear correctly
+  initBackgroundThumbs();
 
   // Smooth scroll for internal links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -53,14 +64,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function escapeHtml(s) { return String(s).replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
+  // Helper: get preview src from a card (background thumb or img fallback)
+  function getCardPreviewSrc(card) {
+    if (!card) return '';
+    const bg = card.querySelector('.animated-thumb');
+    if (bg && bg.dataset && bg.dataset.src) return bg.dataset.src;
+    const img = card.querySelector('img');
+    if (img && img.src) return img.src;
+    // nothing found
+    return '';
+  }
+
   // Portfolio preview handlers (open modal with angled preview)
   document.querySelectorAll('.game-card .preview-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const card = btn.closest('.game-card');
       if (!card) return;
-      const img = card.querySelector('.thumb');
-      const title = img?.dataset?.title || 'Preview';
-      const src = img?.src || '';
+      const src = getCardPreviewSrc(card) || '';
+      const title = (card.querySelector('.animated-thumb')?.dataset?.title) || card.querySelector('h3')?.textContent || 'Preview';
       openModal(`
         <div style="display:flex;flex-direction:column;gap:12px;">
           <h3 style="margin:0">${escapeHtml(title)}</h3>
@@ -82,9 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const storePreviewBtn = el('#storePreviewBtn');
   if (storePreviewBtn) {
     storePreviewBtn.addEventListener('click', () => {
-      const storeImg = el('.store-thumb');
-      const src = storeImg?.src || '';
-      const title = storeImg?.dataset?.title || 'Store Preview';
+      const storeImgDiv = el('.store-thumb');
+      const src = storeImgDiv?.dataset?.src || '';
+      const title = storeImgDiv?.dataset?.title || 'Store Preview';
       openModal(`
         <div style="display:flex;flex-direction:column;gap:12px">
           <h3 style="margin:0">${escapeHtml(title)}</h3>
@@ -105,10 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- MEMORIES: open memory preview on click ----------
   document.querySelectorAll('.memory-card').forEach(card => {
     card.addEventListener('click', (e) => {
-      const img = card.querySelector('.memory-thumb');
+      const imgDiv = card.querySelector('.memory-thumb');
       const title = card.dataset.title || card.querySelector('h3')?.textContent || 'Memory';
       const desc = card.dataset.desc || card.querySelector('.muted')?.textContent || '';
-      const full = img?.dataset?.full || img?.src || '';
+      const full = imgDiv?.dataset?.full || imgDiv?.dataset?.src || '';
       openModal(`
         <div style="display:flex;flex-direction:column;gap:12px;">
           <h3 style="margin:0">${escapeHtml(title)}</h3>
@@ -429,5 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closeModal();
   });
 
+  // Re-init backgrounds if images change or after dynamic updates
+  // (call initBackgroundThumbs() again if you replace data-src dynamically)
   console.log('Site scripts initialized.');
 });
