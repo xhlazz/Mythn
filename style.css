@@ -59,7 +59,7 @@ body{
 .card p{margin:0 0 12px 0; color:var(--muted); font-size:0.95rem}
 .card-body{padding:8px}
 
-/* Thumbnail frame and animation */
+/* Thumbnail frame and animation (background-image approach) */
 .thumb-wrap.animated-frame{
   height:170px;
   overflow:hidden;
@@ -74,16 +74,18 @@ body{
   box-shadow: 0 8px 30px rgba(0,0,0,0.6);
 }
 .animated-thumb{
-  width:110%;
-  height:110%;
-  object-fit:cover;
-  display:block;
-  transform-origin:center;
-  will-change:transform, filter;
+  width:120%;
+  height:120%;
   border-radius:8px;
-  /* initial angled look */
-  transform: rotateX(6deg) rotateY(-6deg) scale(1.06);
+  will-change:transform, opacity, filter;
+  transform-origin:center;
+  backface-visibility:hidden;
+  /* starting 3D angle/scale */
+  transform: rotateX(6deg) rotateY(-6deg) scale(1.06) translateZ(0);
   filter:brightness(0.98) contrast(1.02);
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
   animation: kenburns 20s ease-in-out infinite alternate, slow-tilt 8s ease-in-out infinite alternate;
 }
 
@@ -104,9 +106,9 @@ body{
   100% { transform: rotateX(6deg) rotateY(-6deg) scale(1.06) translateY(0px) translateX(0px); }
 }
 @keyframes slow-tilt {
-  0% { filter: brightness(0.98) saturate(1); transform: rotateX(6deg) rotateY(-6deg) scale(1.06); }
-  50% { filter: brightness(1) saturate(1.02); transform: rotateX(8deg) rotateY(-3deg) scale(1.09); }
-  100% { filter: brightness(0.98) saturate(1); transform: rotateX(6deg) rotateY(-6deg) scale(1.06); }
+  0% { filter: brightness(0.98) saturate(1); transform: rotateX(6deg) rotateY(-6deg) scale(1.06) translateZ(0); }
+  50% { filter: brightness(1) saturate(1.02); transform: rotateX(8deg) rotateY(-3deg) scale(1.09) translateZ(0); }
+  100% { filter: brightness(0.98) saturate(1); transform: rotateX(6deg) rotateY(-6deg) scale(1.06) translateZ(0); }
 }
 
 /* hover — slightly raise & flatten angle */
@@ -126,7 +128,6 @@ body{
   margin-top:12px;
 }
 .memory-card .card-body{padding-top:10px}
-.memory-thumb{transition: transform 360ms ease, filter 360ms ease}
 
 /* Social icons */
 .social-row{display:flex;gap:16px;margin-top:12px;align-items:center}
