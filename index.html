@@ -60,10 +60,8 @@
         <!-- Game 1 (CLOSED - Remake) -->
         <article class="card game-card">
           <div class="thumb-wrap animated-frame">
-            <!-- Local asset (Image 1) -->
-            <img class="thumb animated-thumb" alt="CLOSED - Remake preview"
-                 src="assets/game1.png"
-                 data-title="CLOSED - Remake: The Strongest Powers" />
+            <!-- background-style thumbnail (data-src used by JS) -->
+            <div class="animated-thumb" data-src="assets/game1.png" data-title="CLOSED - Remake: The Strongest Powers" aria-hidden="true"></div>
           </div>
           <div class="card-body">
             <h3>CLOSED - Remake: The Strongest Powers</h3>
@@ -78,10 +76,7 @@
         <!-- Game 2 (MOVED - The Strongest Powers) -->
         <article class="card game-card">
           <div class="thumb-wrap animated-frame">
-            <!-- Local asset (Image 2) -->
-            <img class="thumb animated-thumb" alt="MOVED - The Strongest Powers preview"
-                 src="assets/game2.png"
-                 data-title="MOVED - The Strongest Powers" />
+            <div class="animated-thumb" data-src="assets/game2.png" data-title="MOVED - The Strongest Powers" aria-hidden="true"></div>
           </div>
           <div class="card-body">
             <h3>MOVED - The Strongest Powers</h3>
@@ -102,10 +97,7 @@
       <div class="cards">
         <article class="card store-card">
           <div class="thumb-wrap animated-frame">
-            <!-- Local asset (Image 3) -->
-            <img class="thumb animated-thumb store-thumb" alt="XLAZ CLOTHES store preview"
-                 src="assets/store.png"
-                 data-title="XLAZ CLOTHES Store" />
+            <div class="animated-thumb store-thumb" data-src="assets/store.png" data-title="XLAZ CLOTHES Store" aria-hidden="true"></div>
           </div>
           <div class="card-body">
             <h3>XLAZ CLOTHES</h3>
@@ -127,9 +119,7 @@
       <div class="memories-grid">
         <article class="memory-card card" data-title="First Dev Jam" data-desc="First time showcasing a prototype at an event.">
           <div class="thumb-wrap animated-frame">
-            <img class="memory-thumb animated-thumb" alt="First Dev Jam"
-                 src="assets/memory1.png"
-                 data-full="assets/memory1-large.png" />
+            <div class="animated-thumb memory-thumb" data-src="assets/memory1.png" data-full="assets/memory1-large.png" aria-hidden="true"></div>
           </div>
           <div class="card-body">
             <h3>First Dev Jam</h3>
@@ -139,9 +129,7 @@
 
         <article class="memory-card card" data-title="Team Collab" data-desc="Working late nights with the team to polish features.">
           <div class="thumb-wrap animated-frame">
-            <img class="memory-thumb animated-thumb" alt="Team Collab"
-                 src="assets/memory2.png"
-                 data-full="assets/memory2-large.png" />
+            <div class="animated-thumb memory-thumb" data-src="assets/memory2.png" data-full="assets/memory2-large.png" aria-hidden="true"></div>
           </div>
           <div class="card-body">
             <h3>Team Collab</h3>
@@ -151,9 +139,7 @@
 
         <article class="memory-card card" data-title="First Release" data-desc="The day we launched a public playtest — unforgettable!">
           <div class="thumb-wrap animated-frame">
-            <img class="memory-thumb animated-thumb" alt="First Release"
-                 src="assets/memory3.png"
-                 data-full="assets/memory3-large.png" />
+            <div class="animated-thumb memory-thumb" data-src="assets/memory3.png" data-full="assets/memory3-large.png" aria-hidden="true"></div>
           </div>
           <div class="card-body">
             <h3>First Release</h3>
@@ -188,7 +174,7 @@
 
         <article class="card">
           <h3>Balloon Pop</h3>
-          <p class="muted">Pop balloons for points — quick reflex test.</p>
+          <p class="muted">Pop balloons for points! quick reflex test.</p>
           <div class="card-actions">
             <button id="openBalloon" class="link-btn">Play Balloon Pop</button>
           </div>
@@ -196,7 +182,7 @@
 
         <article class="card">
           <h3>Candle Blow</h3>
-          <p class="muted">Blow out all candles — works with the cake interaction.</p>
+          <p class="muted">Blow out all candles</p>
           <div class="card-actions">
             <button id="openCandle" class="link-btn">Try Candle Blow</button>
           </div>
@@ -244,7 +230,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <small id="footerYear">© <span id="year"></span> xhlazz — designed minimal · neon white</small>
+      <small id="footerYear">© <span id="year"></span>xhlazz</small>
     </div>
   </footer>
 
